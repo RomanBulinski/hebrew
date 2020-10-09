@@ -15,7 +15,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule, MatDialogModule, MatIconModule, MatRippleModule, MatToolbarModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatSidenavModule} from '@angular/material'
+import {MatSidenavModule} from '@angular/material';
+import { StartComponent } from './pages/start/start.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MatSidenavModule} from '@angular/material'
     NavComponent,
     NavComponent,
     AlfaComponent,
-    BetaComponent
+    BetaComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
