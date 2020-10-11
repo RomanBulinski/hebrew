@@ -16,7 +16,9 @@ import {MatCardModule, MatDialogModule, MatIconModule, MatRippleModule, MatToolb
 import {MatButtonModule} from '@angular/material/button';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatSidenavModule} from '@angular/material';
-import { StartComponent } from './pages/start/start.component'
+import { StartComponent } from './pages/start/start.component';
+import { LettersComponent } from './pages/letters/letters.component'
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { StartComponent } from './pages/start/start.component'
     NavComponent,
     AlfaComponent,
     BetaComponent,
-    StartComponent
+    StartComponent,
+    LettersComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { StartComponent } from './pages/start/start.component'
     MatToolbarModule,
     FlexLayoutModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
