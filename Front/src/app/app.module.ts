@@ -19,6 +19,7 @@ import {MatSidenavModule} from '@angular/material';
 import { StartComponent } from './pages/start/start.component';
 import { LettersComponent } from './pages/letters/letters.component'
 import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -30,28 +31,29 @@ import {MatTableModule} from "@angular/material/table";
     StartComponent,
     LettersComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRippleModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatToolbarModule,
-    FlexLayoutModule,
-    MatDialogModule,
-    RouterModule,
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatRippleModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatToolbarModule,
+        FlexLayoutModule,
+        MatDialogModule,
+        RouterModule,
+        MatTableModule,
+        MatSortModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
