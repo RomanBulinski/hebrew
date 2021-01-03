@@ -12,19 +12,15 @@ public class Letter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(fetch = FetchType.EAGER)
     private Long id;
-    private String letterh;
     private String letterp;
-    private String pronunciation;
+    private String letterh;
     private String letterh2;
+    private String nazwa;
+    private Long wartoscnumeryczna;
+    private String opis;
+    private String pronunciation;
 
     public Letter() {
-    }
-
-    public Letter(String letterh, String letterp, String pronunciation, String letterh2) {
-        this.letterh = letterh;
-        this.letterp = letterp;
-        this.pronunciation = pronunciation;
-        this.letterh2 = letterh2;
     }
 
     public Long getId() {
@@ -35,14 +31,6 @@ public class Letter {
         this.id = id;
     }
 
-    public String getLetterh() {
-        return letterh;
-    }
-
-    public void setLetterh(String letterh) {
-        this.letterh = letterh;
-    }
-
     public String getLetterp() {
         return letterp;
     }
@@ -51,12 +39,12 @@ public class Letter {
         this.letterp = letterp;
     }
 
-    public String getPronuncation() {
-        return pronunciation;
+    public String getLetterh() {
+        return letterh;
     }
 
-    public void setPronuncation(String pronuncation) {
-        this.pronunciation = pronuncation;
+    public void setLetterh(String letterh) {
+        this.letterh = letterh;
     }
 
     public String getLetterh2() {
@@ -67,20 +55,35 @@ public class Letter {
         this.letterh2 = letterh2;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Letter letter = (Letter) o;
-        return Objects.equals(id, letter.id) &&
-                Objects.equals(letterh, letter.letterh) &&
-                Objects.equals(letterp, letter.letterp) &&
-                Objects.equals(pronunciation, letter.pronunciation) &&
-                Objects.equals(letterh2, letter.letterh2);
+    public String getNazwa() {
+        return nazwa;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, letterh, letterp, pronunciation, letterh2);
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
+    public Long getWartoscnumeryczna() {
+        return wartoscnumeryczna;
+    }
+
+    public void setWartoscnumeryczna(Long wartoscnumeryczna) {
+        this.wartoscnumeryczna = wartoscnumeryczna;
+    }
+
+    public String getOpis() {
+        return opis;
+    }
+
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
+
+    public String getPronunciation() {
+        return pronunciation;
+    }
+
+    public void setPronunciation(String pronunciation) {
+        this.pronunciation = pronunciation;
     }
 }

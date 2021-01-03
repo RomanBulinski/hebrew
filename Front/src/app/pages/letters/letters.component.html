@@ -1,22 +1,44 @@
-<p>letters works!</p>
+<p>ALFABET</p>
 
 <table mat-table [dataSource]="dataLetters">
 
-  <ng-container matColumnDef="seqNo">
+  <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-    <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
+    <mat-cell *matCellDef="let letter">{{letter.id}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="description">
-    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-    <mat-cell class="description-cell"
-              *matCellDef="let lesson">{{lesson.description}}</mat-cell>
+  <ng-container matColumnDef="letterp">
+    <mat-header-cell *matHeaderCellDef>Polish letter</mat-header-cell>
+    <mat-cell class="letters"
+              *matCellDef="let letter">{{letter.letterp}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="duration">
-    <mat-header-cell *matHeaderCellDef>Duration</mat-header-cell>
-    <mat-cell class="duration-cell"
-              *matCellDef="let lesson">{{lesson.duration}}</mat-cell>
+  <ng-container matColumnDef="letterh">
+    <mat-header-cell *matHeaderCellDef>Hebrew  letter</mat-header-cell>
+    <mat-cell class="letters"
+              *matCellDef="let letter">{{letter.letterh}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="letterh2">
+    <mat-header-cell *matHeaderCellDef>Hebrew  letter 2</mat-header-cell>
+    <mat-cell class="letters"
+              *matCellDef="let letter">{{letter.letterh2}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nazwa">
+    <mat-header-cell *matHeaderCellDef>Nazwa</mat-header-cell>
+    <mat-cell *matCellDef="let letter">{{letter.nazwa}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="wartoscnumeryczna">
+    <mat-header-cell *matHeaderCellDef>wartoscnumeryczna</mat-header-cell>
+    <mat-cell *matCellDef="let letter">{{letter.wartoscnumeryczna}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="opis">
+    <mat-header-cell *matHeaderCellDef>opis</mat-header-cell>
+    <mat-cell class="letters"
+              *matCellDef="let letter">{{letter.opis}}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

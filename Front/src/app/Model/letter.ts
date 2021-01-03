@@ -1,7 +1,11 @@
 export interface Letter {
-    id: number,
-    letterh: string,
-    letterp: string,
-    pronunciation: string,
-    letterh2: string,
+    id: number;
+    letterp: string;
+    letterh: string;
+    letterh2: string;
+    nazwa: string;
+    wartoscnumeryczna: number;
+    opis: string;
+    pronunciation: string;
+
 }
