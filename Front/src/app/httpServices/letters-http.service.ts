@@ -6,7 +6,7 @@ import {Letter} from '../Model/letter';
 @Injectable({
   providedIn: 'root'
 })
-export class LettersService {
+export class LettersHttpService {
 
   constructor(private http: HttpClient) {
   }
@@ -16,4 +16,6 @@ export class LettersService {
   public getLetters(): Observable<Letter[]> {
     return this.http.get<Letter[]>(this.LETTERS_URL);
   }
+
+
 }

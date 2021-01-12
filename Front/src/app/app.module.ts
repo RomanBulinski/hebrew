@@ -20,6 +20,7 @@ import { StartComponent } from './pages/start/start.component';
 import { LettersComponent } from './pages/letters/letters.component'
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import { LetterCardComponent } from './common_components/letter-card/letter-card.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatSortModule} from "@angular/material/sort";
     AlfaComponent,
     BetaComponent,
     StartComponent,
-    LettersComponent
+    LettersComponent,
+    LetterCardComponent
   ],
     imports: [
         BrowserModule,

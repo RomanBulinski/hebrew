@@ -1,3 +1,9 @@
-<p>alfa works!</p>
+
+<app-letter-card [letter]="letter"></app-letter-card>
 
 
+<ul>
+  <li *ngFor="let letter of letters">
+    <app-letter-card [letter]="letter"></app-letter-card>
+  </li>
+</ul>
