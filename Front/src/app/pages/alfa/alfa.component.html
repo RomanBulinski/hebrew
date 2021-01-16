@@ -1,9 +1,35 @@
 
 <app-letter-card [letter]="letter"></app-letter-card>
 
+<!--<ul>-->
+<!--  <li *ngFor="let letter of letters">-->
+<!--    <app-letter-card [letter]="letter"></app-letter-card>-->
+<!--  </li>-->
+<!--</ul>-->
 
-<ul>
-  <li *ngFor="let letter of letters">
-    <app-letter-card [letter]="letter"></app-letter-card>
-  </li>
-</ul>
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>Hebrew letters</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="hebrewLetters"
+      class="example-list"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let  letter of hebrewLetters" cdkDrag>{{letter}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Polish letters</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="polishLetters"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let  letter of polishLetters" cdkDrag>{{letter}}</div>
+    </div>
+  </div>
+</div>

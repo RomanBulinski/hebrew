@@ -21,6 +21,7 @@ import { LettersComponent } from './pages/letters/letters.component'
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import { LetterCardComponent } from './common_components/letter-card/letter-card.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LetterCardComponent } from './common_components/letter-card/letter-card
         MatDialogModule,
         RouterModule,
         MatTableModule,
-        MatSortModule
+        MatSortModule,
+        DragDropModule
     ],
   providers: [],
   bootstrap: [AppComponent]
