@@ -1,5 +1,13 @@
-
 <app-letter-card [letter]="letter"></app-letter-card>
+
+<div [formGroup]="startGroup">
+  <div fxLayout="row">
+    <div>Amount of letters</div>
+    <input type="number" formControlName="lettersAmount">
+    <button (click)="loadAmountOfLetters()">Załaduj litery</button>
+    <button (click)="unsorted()">Wymieszaj</button>
+  </div>
+</div>
 
 <div cdkDropListGroup>
   <div class="example-container">
@@ -27,3 +35,5 @@
     </div>
   </div>
 </div>
+
+<button (click)="check()">Sprawdz</button>

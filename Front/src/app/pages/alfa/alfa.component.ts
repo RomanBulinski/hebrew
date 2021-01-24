@@ -3,6 +3,7 @@ import {LettersHttpService} from '../../httpServices/letters-http.service';
 import {tap} from 'rxjs/operators';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {Letter} from '../../Model/letter';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-alfa',
@@ -11,7 +12,14 @@ import {Letter} from '../../Model/letter';
 })
 export class AlfaComponent implements OnInit {
 
+  lettersAmount: FormControl;
+  startGroup: FormGroup;
+
   constructor(private lettersHttpService: LettersHttpService) {
+    this.lettersAmount = new FormControl();
+    this.startGroup = new FormGroup({
+      lettersAmount: this.lettersAmount,
+    });
   }
 
   letter = 'a';
@@ -39,15 +47,14 @@ export class AlfaComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
-    console.log(this.isAllLettersCorrespond(this.letters, this.hebrewLetters, this.polishLetters));
   }
 
   isAllLettersCorrespond(letters: Letter[],
                          hebrewLetters: string[],
                          polishLetters: string[]): boolean {
-    for (let i = 1; i<hebrewLetters.length+1; i++) {
+    for (let i = 1; i < hebrewLetters.length + 1; i++) {
       if (!this.isLettersCorespondOnPosition(i, letters, hebrewLetters, polishLetters)) {
-        return  false;
+        return false;
       }
     }
     return true;
@@ -65,6 +72,25 @@ export class AlfaComponent implements OnInit {
 
   getPolishLetterByHebrewLetter(hebrewLetter: string, letters: Letter[]): string {
     return letters.filter((element) => element.letterh === hebrewLetter)[0].letterp;
+  }
+
+  loadAmountOfLetters(): void {
+    const amount = this.lettersAmount.value;
+    this.hebrewLetters = this.letters.slice(0, amount).map((ele) => ele.letterh);
+    this.polishLetters = this.letters.slice(0, amount).map((ele) => ele.letterp);
+  }
+
+  unsorted(): void {
+    this.polishLetters = this._unsorted(this.polishLetters);
+    this.hebrewLetters = this.hebrewLetters.sort();
+  }
+
+  _unsorted(letters: string[]): string[] {
+    return letters.sort().reverse();
+  }
+
+  check(){
+    console.log(this.isAllLettersCorrespond(this.letters, this.hebrewLetters, this.polishLetters));
   }
 
 }
