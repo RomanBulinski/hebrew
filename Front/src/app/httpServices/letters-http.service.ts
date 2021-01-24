@@ -13,7 +13,7 @@ export class LettersHttpService {
 
   private LETTERS_URL = 'http://localhost:8080/letters';
 
-  public getLetters(): Observable<Letter[]> {
+  public getAllLetters(): Observable<Letter[]> {
     return this.http.get<Letter[]>(this.LETTERS_URL);
   }
 
