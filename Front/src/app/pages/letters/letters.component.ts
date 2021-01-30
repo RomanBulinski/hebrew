@@ -17,7 +17,7 @@ export class LettersComponent implements AfterViewInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private lettersService: LettersHttpService) {
-    this.lettersService.getAllLetters()
+    this.lettersService.getAll()
       .subscribe(letters => {
         this.dataLetters = new MatTableDataSource(letters);
         this.dataLetters.sort = this.sort;

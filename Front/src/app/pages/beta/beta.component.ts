@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable, of} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
+import {WordsHttpService} from "../../httpServices/words-http.service";
+import {Word} from "../../Model/word";
+
 
 @Component({
   selector: 'app-beta',
@@ -9,30 +12,24 @@ import {map, switchMap, tap} from "rxjs/operators";
 })
 export class BetaComponent implements OnInit {
 
-  constructor() { }
+  words: Word[];
+  hebrewWords: string[];
 
-  maindata = of(1, 2, 3);
+  constructor(private wordsHttpService: WordsHttpService ) {
+
+    this.wordsHttpService.getAll().pipe(
+      tap( (wordsFromBackend) =>{
+        this.words = wordsFromBackend;
+        this.hebrewWords = wordsFromBackend.map( (ele)=> ele.hebrew);
+        console.log(this.hebrewWords);
+      }
+      )).subscribe();
+  }
 
   ngOnInit(): void {
 
-    this.maindata.pipe(
-      tap( (x)=> console.log(x)),
-      map( (x)=> x*10),
-      tap( (x)=> console.log(x)),
-      switchMap( (x) => this.multiplay(x).pipe(
-        tap( (y)=> console.log(y))
-      )),
-      switchMap( (z) => this.multiplay2(z).pipe(
-        tap( (z)=> console.log(z))
-      )),
-    ).subscribe();
+
   }
 
-  multiplay(num:number): Observable<any>{
-    return  of(num * 2);
-  }
 
-  multiplay2(num:number): Observable<any>{
-    return  of(num * 10);
-  }
 }

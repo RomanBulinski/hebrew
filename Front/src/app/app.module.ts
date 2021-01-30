@@ -22,6 +22,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import { LetterCardComponent } from './common_components/letter-card/letter-card.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import { ElementComparatorComponent } from './common_components/element-comparator/element-comparator.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     BetaComponent,
     StartComponent,
     LettersComponent,
-    LetterCardComponent
+    LetterCardComponent,
+    ElementComparatorComponent,
   ],
     imports: [
         BrowserModule,

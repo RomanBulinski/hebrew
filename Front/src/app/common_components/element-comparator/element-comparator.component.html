@@ -1,0 +1,39 @@
+<p>element-comparator works!</p>
+
+<div [formGroup]="startGroup">
+  <div fxLayout="row" fxLayout="row" fxLayoutAlign="space-around center">
+    <div>Amount of letters</div>
+    <input type="number" formControlName="elementsAmount">
+    <button mat-raised-button (click)="loadAmountOfLetters()" >Załaduj litery</button>
+    <button mat-raised-button (click)="unsorted()" >Wymieszaj</button>
+  </div>
+</div>
+
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>Hebrew letters</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="firstSet"
+      class="example-list"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="dropElement($event)">
+      <div class="example-box" *ngFor="let  letter of firstSet" cdkDrag>{{letter}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Polish letters</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="secondSet"
+      class="example-list"
+      (cdkDropListDropped)="dropElement($event)">
+      <div class="example-box" *ngFor="let  letter of secondSet" cdkDrag>{{letter}}</div>
+    </div>
+  </div>
+</div>
+
+<button mat-raised-button (click)="check()" color="primary">Sprawdz</button>
