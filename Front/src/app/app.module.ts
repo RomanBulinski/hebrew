@@ -22,6 +22,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { ElementComparatorComponent } from './common_components/element-comparator/element-comparator.component';
 import {LessonsComponent} from "./pages/lessons/lessons.component";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {LessonsComponent} from "./pages/lessons/lessons.component";
         RouterModule,
         MatTableModule,
         MatSortModule,
-        DragDropModule
+        DragDropModule,
+        MatListModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,6 +27,7 @@ export class ElementComparatorComponent implements OnInit , OnChanges {
   elementsAmount: FormControl;
   startGroup: FormGroup;
   outcom: string;
+  elementFields: string[];
 
   constructor() {
     this.elementsAmount = new FormControl();
@@ -53,8 +54,10 @@ export class ElementComparatorComponent implements OnInit , OnChanges {
         this.allElements = elements;
         this.firstSet = elements.map((ele) => ele[this.firstIngredient]);
         this.secondSet = elements.map((ele) => ele[this.secondIngredient]);
+        this.elementFields = Object.keys(elements[0]);
       })
     ).subscribe();
+
   }
 
   dropElement(event: CdkDragDrop<string[]>) {

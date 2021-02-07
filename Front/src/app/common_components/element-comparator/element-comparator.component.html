@@ -1,4 +1,7 @@
-<p>element-comparator works!</p>
+
+<mat-nav-list>
+  <a mat-list-item  *ngFor="let field of elementFields"> {{ field }} </a>
+</mat-nav-list>
 
 <div [formGroup]="startGroup">
   <div fxLayout="row" fxLayoutAlign="space-around center">
@@ -11,8 +14,7 @@
 
 <div cdkDropListGroup>
   <div class="example-container">
-    <h2>Hebrew letters</h2>
-
+    <h2>{{firstIngredient}}</h2>
     <div
       cdkDropList
       [cdkDropListData]="firstSet"
@@ -22,10 +24,8 @@
       <div class="example-box" *ngFor="let  letter of firstSet" cdkDrag>{{letter}}</div>
     </div>
   </div>
-
   <div class="example-container">
-    <h2>Polish letters</h2>
-
+    <h2>{{secondIngredient}}</h2>
     <div
       cdkDropList
       [cdkDropListData]="secondSet"
