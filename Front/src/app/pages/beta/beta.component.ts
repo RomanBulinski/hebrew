@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Observable, of} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
-import {WordsHttpService} from "../../httpServices/words-http.service";
-import {Word} from "../../Model/word";
+import {Component, OnInit} from '@angular/core';
+import {ElementForCompare} from '../../Model/element-for-compare';
+import {WordsHttpService} from '../../httpServices/words-http.service';
+
 
 
 @Component({
@@ -12,18 +11,15 @@ import {Word} from "../../Model/word";
 })
 export class BetaComponent implements OnInit {
 
-  words: Word[];
-  hebrewWords: string[];
+  elementForCompare: ElementForCompare;
 
-  constructor(private wordsHttpService: WordsHttpService ) {
+  constructor(private wordsHttpService: WordsHttpService) {
 
-    this.wordsHttpService.getAll().pipe(
-      tap( (wordsFromBackend) =>{
-        this.words = wordsFromBackend;
-        this.hebrewWords = wordsFromBackend.map( (ele)=> ele.hebrew);
-        console.log(this.hebrewWords);
-      }
-      )).subscribe();
+    this.elementForCompare = {
+      firstIngredient: "hebrew",
+      secondIngredient: "polish",
+      httpService: this.wordsHttpService
+    };
   }
 
   ngOnInit(): void {

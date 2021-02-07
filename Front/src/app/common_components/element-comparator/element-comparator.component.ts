@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {ElementForCompare} from '../../Model/element-for-compare';
 import {HttpService} from "../../httpServices/http.service";
@@ -12,10 +12,9 @@ import {Letter} from "../../Model/letter";
   templateUrl: './element-comparator.component.html',
   styleUrls: ['./element-comparator.component.css']
 })
-export class ElementComparatorComponent implements OnInit {
+export class ElementComparatorComponent implements OnInit , OnChanges {
 
   @Input('elementForCompare') elementForCompare: ElementForCompare;
-  @Input() x: string;
 
   firstIngredient: string;
   secondIngredient: string;
@@ -27,6 +26,7 @@ export class ElementComparatorComponent implements OnInit {
 
   elementsAmount: FormControl;
   startGroup: FormGroup;
+  outcom: string;
 
   constructor() {
     this.elementsAmount = new FormControl();
@@ -36,7 +36,14 @@ export class ElementComparatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadData();
+  }
 
+  ngOnChanges() {
+    this.loadData();
+  }
+
+  private loadData() {
     this.firstIngredient = this.elementForCompare.firstIngredient;
     this.secondIngredient = this.elementForCompare.secondIngredient;
     this.httpService = this.elementForCompare.httpService;
@@ -44,7 +51,7 @@ export class ElementComparatorComponent implements OnInit {
     this.httpService.getAll().pipe(
       tap((elements) => {
         this.allElements = elements;
-        this.firstSet = elements.map((ele) => ele[this.firstIngredient] );
+        this.firstSet = elements.map((ele) => ele[this.firstIngredient]);
         this.secondSet = elements.map((ele) => ele[this.secondIngredient]);
       })
     ).subscribe();
@@ -65,7 +72,7 @@ export class ElementComparatorComponent implements OnInit {
                                firstSet: string[],
                                secondSet: string[]): boolean {
     for (let i = 1; i < firstSet.length + 1; i++) {
-      if (!this.chackIfElementCorespondOnPosition(i, allElements, firstSet, secondSet)) {
+      if (!this.checkIfElementCorespondOnPosition(i, allElements, firstSet, secondSet)) {
         return false;
       }
     }
@@ -73,17 +80,17 @@ export class ElementComparatorComponent implements OnInit {
   }
 
   // position is counted from 1, not from 0
-  chackIfElementCorespondOnPosition(position: number,
+  checkIfElementCorespondOnPosition(position: number,
                                     allElements: Letter[],
                                     firstSet: string[],
                                     secondSet: string[]): boolean {
-    const firstElement = firstSet.slice(position - 1, position)[0];
-    const seconElement = secondSet.slice(position - 1, position)[0];
-    return seconElement === this.getSecondElementByFirstElemnt(firstElement, allElements);
+    const firstIngredient = firstSet.slice(position - 1, position)[0];
+    const secondIngredient = secondSet.slice(position - 1, position)[0];
+    return secondIngredient === this.getSecondElementByFirstElemnt(firstIngredient, allElements);
   }
 
-  private getSecondElementByFirstElemnt(firstElement: string, allElements: any[]): string {
-    return allElements.filter((element) => element[this.firstIngredient] === firstElement)[0][this.secondIngredient];
+  private getSecondElementByFirstElemnt(firstIngredient: string, allElements: any[]): string {
+    return allElements.filter((element) => element[this.firstIngredient] === firstIngredient)[0][this.secondIngredient];
   }
 
   loadAmountOfLetters(): void {
@@ -102,8 +109,11 @@ export class ElementComparatorComponent implements OnInit {
   }
 
   check(): void {
-    console.log(this.checkIfAllElementsCorrespond(this.allElements, this.firstSet, this.secondSet));
+    this.outcom = this.setOutcomByBoolean(this.checkIfAllElementsCorrespond(this.allElements, this.firstSet, this.secondSet));
   }
 
+  setOutcomByBoolean(isAllElementCorrespond: boolean): string {
+    return isAllElementCorrespond ? 'DOBRZE' : "ZLE";
+  }
 
 }

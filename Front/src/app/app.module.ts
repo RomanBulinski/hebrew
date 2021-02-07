@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
 import {NavComponent} from './nav/nav.component';
-import { AlfaComponent } from './pages/alfa/alfa.component';
 import { BetaComponent } from './pages/beta/beta.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -20,20 +19,19 @@ import { StartComponent } from './pages/start/start.component';
 import { LettersComponent } from './pages/letters/letters.component'
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
-import { LetterCardComponent } from './common_components/letter-card/letter-card.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { ElementComparatorComponent } from './common_components/element-comparator/element-comparator.component';
+import {LessonsComponent} from "./pages/lessons/lessons.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     NavComponent,
-    AlfaComponent,
+    LessonsComponent,
     BetaComponent,
     StartComponent,
     LettersComponent,
-    LetterCardComponent,
     ElementComparatorComponent,
   ],
     imports: [
