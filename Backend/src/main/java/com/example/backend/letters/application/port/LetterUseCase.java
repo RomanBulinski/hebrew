@@ -1,10 +1,10 @@
-package com.example.backend.services;
+package com.example.backend.letters.application.port;
 
-import com.example.backend.models.Letter;
+import com.example.backend.letters.domain.Letter;
 
 import java.util.List;
 
-public interface ILetterService {
+public interface LetterUseCase {
 
     List<Letter> findAllLetters();
 //    Letter delete(long id);

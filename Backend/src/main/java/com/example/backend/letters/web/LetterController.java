@@ -1,7 +1,10 @@
-package com.example.backend.controllers;
+package com.example.backend.letters.web;
 
-import com.example.backend.models.Letter;
-import com.example.backend.services.LetterService;
+import com.example.backend.letters.application.LetterService;
+import com.example.backend.letters.application.port.LetterUseCase;
+import com.example.backend.letters.domain.Letter;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,14 +16,14 @@ import java.util.List;
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/letters")
+@AllArgsConstructor
 public class LetterController {
 
-    @Autowired
-    private LetterService letterService;
+    private final LetterUseCase letterUseCase;
 
     @GetMapping()
     public List<Letter> findLetters(HttpServletResponse response) {
-        List<Letter> letters = letterService.findAllLetters();
+        List<Letter> letters = letterUseCase.findAllLetters();
         response.setStatus(201);
         return letters;
     }

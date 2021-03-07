@@ -1,10 +1,10 @@
-package com.example.backend.services;
+package com.example.backend.words.application.port;
 
-import com.example.backend.models.Word;
+import com.example.backend.words.doamin.Word;
 
 import java.util.List;
 
-public interface IWordService {
+public interface WordUseCase {
 
     List<Word> findAllWords();
 //    Letter delete(long id);

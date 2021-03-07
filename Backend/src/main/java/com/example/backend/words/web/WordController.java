@@ -1,9 +1,9 @@
-package com.example.backend.controllers;
+package com.example.backend.words.web;
 
-import com.example.backend.models.Letter;
-import com.example.backend.models.Word;
-import com.example.backend.services.LetterService;
-import com.example.backend.services.WordService;
+import com.example.backend.words.application.port.WordUseCase;
+import com.example.backend.words.doamin.Word;
+import com.example.backend.words.application.WordService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +18,14 @@ import java.util.List;
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/words")
+@AllArgsConstructor
 public class WordController {
 
-    @Autowired
-    private WordService wordService;
+    private final WordUseCase wordUseCase;
 
     @GetMapping()
     public List<Word> findLetters(HttpServletResponse response) {
-        List<Word> words = wordService.findAllWords();
+        List<Word> words = wordUseCase.findAllWords();
         response.setStatus(201);
         return words;
     }

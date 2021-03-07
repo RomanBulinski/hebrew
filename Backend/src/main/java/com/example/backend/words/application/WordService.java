@@ -1,21 +1,22 @@
-package com.example.backend.services;
+package com.example.backend.words.application;
 
-import com.example.backend.models.Letter;
-import com.example.backend.repositories.LetterRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.backend.words.application.port.WordUseCase;
+import com.example.backend.words.doamin.Word;
+import com.example.backend.words.db.WordJpaRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class LetterService implements ILetterService {
+@AllArgsConstructor
+public class WordService implements WordUseCase {
 
-    @Autowired
-    private LetterRepository letterRepository;
+    private final WordJpaRepository wordRepository;
 
     @Override
-    public List<Letter> findAllLetters() {
-        return (List<Letter>) letterRepository.findAll();
+    public List<Word> findAllWords() {
+        return (List<Word>) wordRepository.findAll();
     }
 
 //    @Override
