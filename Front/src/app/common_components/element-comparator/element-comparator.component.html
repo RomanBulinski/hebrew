@@ -1,13 +1,9 @@
 
-<mat-nav-list>
-  <a mat-list-item  *ngFor="let field of elementFields"> {{ field }} </a>
-</mat-nav-list>
-
 <div [formGroup]="startGroup">
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <div>Amount of letters</div>
     <input type="number" formControlName="elementsAmount">
-    <button mat-raised-button (click)="loadAmountOfLetters()">Załaduj litery</button>
+    <button mat-raised-button (click)="loadAmountOfLetters()">Załaduj elementy</button>
     <button mat-raised-button (click)="unsorted()">Wymieszaj</button>
   </div>
 </div>

@@ -1,18 +1,18 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {ElementForCompare} from '../../Model/element-for-compare';
-import {HttpService} from "../../httpServices/http.service";
-import {tap} from "rxjs/operators";
-import {LettersHttpService} from "../../httpServices/letters-http.service";
-import {FormControl, FormGroup} from "@angular/forms";
-import {Letter} from "../../Model/letter";
+import {HttpService} from '../../httpServices/http.service';
+import {catchError, tap} from 'rxjs/operators';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Letter} from '../../Model/letter';
+import {EMPTY} from "rxjs";
 
 @Component({
   selector: 'app-element-comparator',
   templateUrl: './element-comparator.component.html',
   styleUrls: ['./element-comparator.component.css']
 })
-export class ElementComparatorComponent implements OnInit , OnChanges {
+export class ElementComparatorComponent implements OnInit, OnChanges {
 
   @Input('elementForCompare') elementForCompare: ElementForCompare;
 
@@ -40,11 +40,12 @@ export class ElementComparatorComponent implements OnInit , OnChanges {
     this.loadData();
   }
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.loadData();
   }
 
-  private loadData() {
+  private loadData(): void {
+
     this.firstIngredient = this.elementForCompare.firstIngredient;
     this.secondIngredient = this.elementForCompare.secondIngredient;
     this.httpService = this.elementForCompare.httpService;
@@ -55,12 +56,14 @@ export class ElementComparatorComponent implements OnInit , OnChanges {
         this.firstSet = elements.map((ele) => ele[this.firstIngredient]);
         this.secondSet = elements.map((ele) => ele[this.secondIngredient]);
         this.elementFields = Object.keys(elements[0]);
+      }),
+      catchError((err) => {
+        return EMPTY;
       })
     ).subscribe();
-
   }
 
-  dropElement(event: CdkDragDrop<string[]>) {
+  dropElement(event: CdkDragDrop<string[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -116,7 +119,6 @@ export class ElementComparatorComponent implements OnInit , OnChanges {
   }
 
   setOutcomByBoolean(isAllElementCorrespond: boolean): string {
-    return isAllElementCorrespond ? 'DOBRZE' : "ZLE";
+    return isAllElementCorrespond ? 'DOBRZE' : 'ZLE';
   }
-
 }

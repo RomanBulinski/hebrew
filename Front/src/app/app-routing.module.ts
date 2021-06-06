@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {BetaComponent} from './pages/beta/beta.component';
 import {StartComponent} from './pages/start/start.component';
-import {LettersComponent} from "./pages/letters/letters.component";
-import {LessonsComponent} from "./pages/lessons/lessons.component";
-
+import {LettersComponent} from './pages/letters/letters.component';
+import {LessonsComponent} from './pages/lessons/lessons.component';
+import {AddWordsComponent} from './pages/add-words/add-words.component';
 
 const routes: Routes = [
 
@@ -12,8 +11,7 @@ const routes: Routes = [
   {path: 'start', component: StartComponent},
   {path: 'letters', component: LettersComponent},
   {path: 'lessons', component: LessonsComponent},
-  {path: 'beta', component: BetaComponent},
-
+  {path: 'add words', component: AddWordsComponent},
 ];
 
 @NgModule({
@@ -21,4 +19,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

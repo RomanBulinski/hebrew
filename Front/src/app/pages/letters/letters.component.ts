@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {MatSort} from "@angular/material/sort";
-import {LettersHttpService} from "../../httpServices/letters-http.service";
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {LettersHttpService} from '../../httpServices/letters-http.service';
 
 @Component({
   selector: 'app-letters',
@@ -21,11 +21,10 @@ export class LettersComponent implements AfterViewInit {
       .subscribe(letters => {
         this.dataLetters = new MatTableDataSource(letters);
         this.dataLetters.sort = this.sort;
-        console.log(letters)
+        console.log(letters);
       });
   }
 
   ngAfterViewInit() {
   }
-
 }

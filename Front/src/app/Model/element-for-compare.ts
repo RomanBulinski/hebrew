@@ -1,4 +1,4 @@
-import {HttpService} from "../httpServices/http.service";
+import {HttpService} from '../httpServices/http.service';
 
 export interface ElementForCompare {
 

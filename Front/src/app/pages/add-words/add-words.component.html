@@ -1,0 +1,37 @@
+<p>add-words works!</p>
+
+<!--<label>-->
+<!--  Name:-->
+<!--  <input type="text" [formControl]="hebrew">-->
+<!--</label>-->
+
+
+<div [formGroup]="addWord"  fxLayout="column" fxLayoutAlign="space-around center">
+
+  <mat-form-field appearance="outline">
+    <mat-label>HEBREW</mat-label>
+    <input matInput placeholder="HEBREW" formControlName="hebrew">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Pronunciation</mat-label>
+    <input matInput placeholder="pronunciation" formControlName="pronunciation">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>POLISH</mat-label>
+    <input matInput placeholder="POLISH" formControlName="polish">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput placeholder="Description" formControlName="description">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="saveWord()">Save word</button>
+
+</div>

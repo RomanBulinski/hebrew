@@ -1,9 +1,6 @@
-export class Word {
-
-  id: number;
+export interface Word {
   hebrew: string;
   pronunciation: string;
   polish: string;
-  description :string;
-
+  description: string;
 }

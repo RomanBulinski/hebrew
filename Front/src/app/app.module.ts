@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
 import {NavComponent} from './nav/nav.component';
-import { BetaComponent } from './pages/beta/beta.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -21,8 +20,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { ElementComparatorComponent } from './common_components/element-comparator/element-comparator.component';
-import {LessonsComponent} from "./pages/lessons/lessons.component";
-import {MatListModule} from "@angular/material/list";
+import {LessonsComponent} from './pages/lessons/lessons.component';
+import {MatListModule} from '@angular/material/list';
+import { AddWordsComponent } from './pages/add-words/add-words.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +30,10 @@ import {MatListModule} from "@angular/material/list";
     NavComponent,
     NavComponent,
     LessonsComponent,
-    BetaComponent,
     StartComponent,
     LettersComponent,
     ElementComparatorComponent,
+    AddWordsComponent,
   ],
     imports: [
         BrowserModule,

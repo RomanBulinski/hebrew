@@ -19,6 +19,17 @@ public class WordService implements WordUseCase {
         return (List<Word>) wordRepository.findAll();
     }
 
+    @Override
+    public Word add(CreateWordCommand createWordCommand) {
+        Word word = new Word(
+                createWordCommand.getHebrew(),
+                createWordCommand.getPronunciation(),
+                createWordCommand.getPolish(),
+                createWordCommand.getDescription()
+        );
+        return wordRepository.save(word);
+    }
+
 //    @Override
 //    public Letter delete(long id) {
 //        Letter letter = letterRepository.findById(id).get();
@@ -28,10 +39,6 @@ public class WordService implements WordUseCase {
 //        return letter;
 //    }
 
-//    @Override
-//    public Owner create(Owner owner) {
-//        return ownerRepository.save(owner);
-//    }
 
 //    @Override
 //    public Owner findById(int id) {

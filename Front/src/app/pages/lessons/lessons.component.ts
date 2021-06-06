@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LettersHttpService} from '../../httpServices/letters-http.service';
 import {FormGroup} from '@angular/forms';
 import {ElementForCompare} from '../../Model/element-for-compare';
-import {WordsHttpService} from "../../httpServices/words-http.service";
+import {WordsHttpService} from '../../httpServices/words-http.service';
 
 
 @Component({
@@ -16,10 +16,11 @@ export class LessonsComponent implements OnInit {
   startGroup: FormGroup;
 
   letters = 'Letters';
-  words1 = 'Words 1';
+  words1 = 'Words';
+
   elementForCompare: ElementForCompare;
   lettersForCompare: ElementForCompare;
-  words1ForCompare: ElementForCompare;
+  wordsForCompare: ElementForCompare;
 
   constructor(private lettersHttpService: LettersHttpService,
               private wordsHttpService: WordsHttpService) {
@@ -30,25 +31,24 @@ export class LessonsComponent implements OnInit {
       httpService: this.lettersHttpService
     };
 
-    this.words1ForCompare = {
+    this.wordsForCompare = {
       firstIngredient: 'hebrew',
       secondIngredient: 'polish',
       httpService: this.wordsHttpService
     };
 
-    this.elementForCompare = this.lettersForCompare;
+    this.elementForCompare = this.wordsForCompare;
   }
 
   ngOnInit(): void {
   }
 
   chooseLesson(lesson: string): void {
-    if (lesson === 'words1') {
-      this.elementForCompare = this.words1ForCompare;
-    }else{
+    if (lesson === 'words') {
+      this.elementForCompare = this.wordsForCompare;
+    } else if (lesson === 'letters') {
       this.elementForCompare = this.lettersForCompare;
     }
   }
-
-
 }
+
