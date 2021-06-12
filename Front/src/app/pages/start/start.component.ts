@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DBInitHttpService} from "../../httpServices/dbinit-http.service";
 
 @Component({
   selector: 'app-start',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dBInitHttpService: DBInitHttpService) {
+  }
 
   ngOnInit(): void {
   }
 
+  public initDB(): void {
+    this.dBInitHttpService.dataBaseInit().subscribe();
+  }
 }
+

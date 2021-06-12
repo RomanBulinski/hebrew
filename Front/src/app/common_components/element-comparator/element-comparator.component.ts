@@ -5,7 +5,7 @@ import {HttpService} from '../../httpServices/http.service';
 import {catchError, tap} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Letter} from '../../Model/letter';
-import {EMPTY} from "rxjs";
+import {EMPTY} from 'rxjs';
 
 @Component({
   selector: 'app-element-comparator',
@@ -99,7 +99,7 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
     return allElements.filter((element) => element[this.firstIngredient] === firstIngredient)[0][this.secondIngredient];
   }
 
-  loadAmountOfLetters(): void {
+  loadAmountOfElements(): void {
     const amount = this.elementsAmount.value;
     this.firstSet = this.allElements.slice(0, amount).map((ele) => ele[this.firstIngredient]);
     this.secondSet = this.allElements.slice(0, amount).map((ele) => ele[this.secondIngredient]);

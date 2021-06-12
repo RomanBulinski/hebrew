@@ -1,5 +1,6 @@
-package com.example.backend;
+package com.example.backend.DataBase.application;
 
+import com.example.backend.InitDataBase;
 import com.example.backend.words.db.WordJpaRepository;
 import com.example.backend.words.doamin.Word;
 import com.opencsv.bean.CsvBindByName;
@@ -8,29 +9,23 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-@Component
+@Service
 @AllArgsConstructor
-public class InitDataBase implements CommandLineRunner {
+public class DataBaseService {
 
     private final WordJpaRepository wordJpaRepository;
 
-    @Override
-    public void run(String... args) throws Exception {
-//        initWords();
-    }
-
-    private void initWords() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new ClassPathResource("words.csv").getInputStream()))) {
-            CsvToBean<CsvWords> build = new CsvToBeanBuilder<CsvWords>(reader)
-                    .withType(CsvWords.class)
+    public void initWords() {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new ClassPathResource("words2.csv").getInputStream()))) {
+            CsvToBean<InitDataBase.CsvWords> build = new CsvToBeanBuilder<InitDataBase.CsvWords>(reader)
+                    .withType(InitDataBase.CsvWords.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
             build.stream().forEach(this::initWords);
@@ -39,7 +34,7 @@ public class InitDataBase implements CommandLineRunner {
         }
     }
 
-    private void initWords(CsvWords csvWords) {
+    private void initWords(InitDataBase.CsvWords csvWords) {
         Word word = new Word(
                 csvWords.getHebrew(),
                 csvWords.getPronunciation(),
@@ -62,4 +57,5 @@ public class InitDataBase implements CommandLineRunner {
         @CsvBindByName
         private String description;
     }
+
 }

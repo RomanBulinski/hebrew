@@ -32,7 +32,7 @@ export class LessonsComponent implements OnInit {
     };
 
     this.wordsForCompare = {
-      firstIngredient: 'hebrew',
+      firstIngredient: 'pronunciation',
       secondIngredient: 'polish',
       httpService: this.wordsHttpService
     };

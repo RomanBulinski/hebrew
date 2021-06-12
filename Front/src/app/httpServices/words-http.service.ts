@@ -18,7 +18,6 @@ export class WordsHttpService extends HttpService{
   }
 
   public save(word: Word): Observable<any> {
-    console.log("1111111111111");
     return this.http.post<Word>( 'http://localhost:8080/words', word );
   }
 }

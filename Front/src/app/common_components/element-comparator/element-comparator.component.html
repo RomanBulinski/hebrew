@@ -3,31 +3,31 @@
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <div>Amount of letters</div>
     <input type="number" formControlName="elementsAmount">
-    <button mat-raised-button (click)="loadAmountOfLetters()">Załaduj elementy</button>
+    <button mat-raised-button (click)="loadAmountOfElements()">Załaduj elementy</button>
     <button mat-raised-button (click)="unsorted()">Wymieszaj</button>
   </div>
 </div>
 
 <div cdkDropListGroup>
-  <div class="example-container">
+  <div class="container">
     <h2>{{firstIngredient}}</h2>
     <div
       cdkDropList
       [cdkDropListData]="firstSet"
-      class="example-list"
+      class="list"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="dropElement($event)">
-      <div class="example-box" *ngFor="let  letter of firstSet" cdkDrag>{{letter}}</div>
+      <div class="box" *ngFor="let  letter of firstSet" cdkDrag>{{letter}}</div>
     </div>
   </div>
-  <div class="example-container">
+  <div class="container">
     <h2>{{secondIngredient}}</h2>
     <div
       cdkDropList
       [cdkDropListData]="secondSet"
-      class="example-list"
+      class="list"
       (cdkDropListDropped)="dropElement($event)">
-      <div class="example-box" *ngFor="let  letter of secondSet" cdkDrag>{{letter}}</div>
+      <div class="box" *ngFor="let  letter of secondSet" cdkDrag>{{letter}}</div>
     </div>
   </div>
 </div>
