@@ -36,5 +36,14 @@ section {
   color: black;
 }
 
+/*all of mat-form-field*/
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: black;
+}
+
+.mat-form-field{
+  font-size: 16px;
+}
+
 
 

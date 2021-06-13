@@ -21,8 +21,8 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
   httpService: HttpService;
 
   allElements: any[];
-  firstSet: string[];
-  secondSet: string[];
+  firstElementSet: string[];
+  secondElementSet: string[];
 
   elementsAmount: FormControl;
   startGroup: FormGroup;
@@ -53,8 +53,8 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
     this.httpService.getAll().pipe(
       tap((elements) => {
         this.allElements = elements;
-        this.firstSet = elements.map((ele) => ele[this.firstIngredient]);
-        this.secondSet = elements.map((ele) => ele[this.secondIngredient]);
+        this.firstElementSet = elements.map((ele) => ele[this.firstIngredient]);
+        this.secondElementSet = elements.map((ele) => ele[this.secondIngredient]);
         this.elementFields = Object.keys(elements[0]);
       }),
       catchError((err) => {
@@ -100,14 +100,40 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
   }
 
   loadAmountOfElements(): void {
-    const amount = this.elementsAmount.value;
-    this.firstSet = this.allElements.slice(0, amount).map((ele) => ele[this.firstIngredient]);
-    this.secondSet = this.allElements.slice(0, amount).map((ele) => ele[this.secondIngredient]);
+    // const amountForLoad = this.elementsAmount.value;
+    // this.firstElementSet = this.allElements.slice(0, amountForLoad).map((ele) => ele[this.firstIngredient]);
+    // this.secondElementSet = this.allElements.slice(0, amountForLoad).map((ele) => ele[this.secondIngredient]);
+    this.loadAmountOfElementsLosowo();
+  }
+
+  loadAmountOfElementsLosowo(): void {
+
+    this.firstElementSet = [];
+    this.secondElementSet = [];
+
+    const amountForLoad = this.elementsAmount.value;
+    const amountAllELements = this.allElements.length;
+
+    const indexiesForLoad = [];
+
+    while (indexiesForLoad.length < amountForLoad) {
+      const findedRandomIndex = Math.floor((Math.random() * amountAllELements) + 1);
+      if (!indexiesForLoad.includes(findedRandomIndex)) {
+        indexiesForLoad.push(findedRandomIndex);
+      }
+    }
+    indexiesForLoad.forEach(
+      (index) => {
+        const element = this.allElements[index];
+        console.log(element);
+        this.firstElementSet.push(element[this.firstIngredient]);
+        this.secondElementSet.push(element[this.secondIngredient]);
+      });
   }
 
   unsorted(): void {
-    this.secondSet = this._unsorted(this.secondSet);
-    this.firstSet = this.firstSet.sort();
+    this.secondElementSet = this._unsorted(this.secondElementSet);
+    this.firstElementSet = this.firstElementSet.sort();
   }
 
   _unsorted(letters: string[]): string[] {
@@ -115,7 +141,7 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
   }
 
   check(): void {
-    this.outcom = this.setOutcomByBoolean(this.checkIfAllElementsCorrespond(this.allElements, this.firstSet, this.secondSet));
+    this.outcom = this.setOutcomByBoolean(this.checkIfAllElementsCorrespond(this.allElements, this.firstElementSet, this.secondElementSet));
   }
 
   setOutcomByBoolean(isAllElementCorrespond: boolean): string {
