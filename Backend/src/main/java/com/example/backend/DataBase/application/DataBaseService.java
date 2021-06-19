@@ -22,8 +22,8 @@ public class DataBaseService {
 
     private final WordJpaRepository wordJpaRepository;
 
-    public void initWords() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new ClassPathResource("words2.csv").getInputStream()))) {
+    public void loadWordsToDB() {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new ClassPathResource("words.csv").getInputStream()))) {
             CsvToBean<InitDataBase.CsvWords> build = new CsvToBeanBuilder<InitDataBase.CsvWords>(reader)
                     .withType(InitDataBase.CsvWords.class)
                     .withIgnoreLeadingWhiteSpace(true)

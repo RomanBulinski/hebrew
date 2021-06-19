@@ -17,6 +17,7 @@ public class DataBaseController {
 
     @GetMapping()
     public void initDataBase() {
-        dataBaseService.initWords();
+        dataBaseService.loadWordsToDB();
     }
+
 }

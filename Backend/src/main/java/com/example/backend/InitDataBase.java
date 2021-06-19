@@ -28,7 +28,7 @@ public class InitDataBase implements CommandLineRunner {
     }
 
     private void initWords() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new ClassPathResource("words.csv").getInputStream()))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new ClassPathResource("words_Basic.csv").getInputStream()))) {
             CsvToBean<CsvWords> build = new CsvToBeanBuilder<CsvWords>(reader)
                     .withType(CsvWords.class)
                     .withIgnoreLeadingWhiteSpace(true)

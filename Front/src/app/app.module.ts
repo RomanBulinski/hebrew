@@ -23,6 +23,7 @@ import { ElementComparatorComponent } from './common_components/element-comparat
 import {LessonsComponent} from './pages/lessons/lessons.component';
 import {MatListModule} from '@angular/material/list';
 import { AddWordsComponent } from './pages/add-words/add-words.component';
+import { BasicComponent } from './pages/basic/basic.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AddWordsComponent } from './pages/add-words/add-words.component';
     LettersComponent,
     ElementComparatorComponent,
     AddWordsComponent,
+    BasicComponent,
   ],
     imports: [
         BrowserModule,

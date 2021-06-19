@@ -106,6 +106,7 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
     this.loadAmountOfElementsLosowo();
   }
 
+// TODO refactor code below
   loadAmountOfElementsLosowo(): void {
 
     this.firstElementSet = [];
@@ -131,6 +132,11 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
       });
   }
 
+  changeOrder(): void{
+    this.firstIngredient = this.elementForCompare.secondIngredient;
+    this.secondIngredient = this.elementForCompare.firstIngredient;
+  }
+
   unsorted(): void {
     this.secondElementSet = this._unsorted(this.secondElementSet);
     this.firstElementSet = this.firstElementSet.sort();
@@ -148,3 +154,4 @@ export class ElementComparatorComponent implements OnInit, OnChanges {
     return isAllElementCorrespond ? 'DOBRZE' : 'ZLE';
   }
 }
+
